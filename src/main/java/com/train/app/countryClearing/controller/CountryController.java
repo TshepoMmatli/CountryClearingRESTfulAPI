@@ -29,9 +29,8 @@ public class CountryController {
 
    @GetMapping(value = "/clearedCountries")
    public List<ClearedCountry> clearedCountries() {
-      return this.countryService.getClearedCountries();
+       return this.countryService.getClearedCountries();
    }
-
 
 }
 

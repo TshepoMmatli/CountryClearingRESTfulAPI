@@ -28,20 +28,18 @@ public class CountryService {
         try {
             url = new URL("https://restcountries.eu/rest/v2/region/africa");
             ObjectMapper objectMapper = new ObjectMapper();
-            countryList = objectMapper.readValue(url, new TypeReference<List<Country>>() {
-            });
+            countryList = objectMapper.readValue(url, new TypeReference<List<Country>>() {});
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-
         }
+
         return countryList;
     }
     
     //Updates a country for clearing
     public void updateCountry(String countryCode, double amount, int status) {
-
         ClearedCountry clearedCountry = new ClearedCountry(countryCode, amount, status);
         this.countryRepository.save(clearedCountry);
     }
