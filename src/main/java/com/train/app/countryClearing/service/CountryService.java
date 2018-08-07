@@ -1,16 +1,18 @@
 package com.train.app.countryClearing.service;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.train.app.countryClearing.model.ClearedCountry;
 import com.train.app.countryClearing.model.Country;
+import com.train.app.countryClearing.model.Response;
 import com.train.app.countryClearing.repository.CountryRepository;
 import org.springframework.stereotype.Service;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
+import java.net.*;
+
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -20,22 +22,43 @@ public class CountryService {
     CountryRepository countryRepository;
 
     //Downloads a list of countries for the Africa region
-    public List<Country> getCountries() {
+    public Response getCountries() {
 
-        List<Country> countryList = new ArrayList<>();
-        URL url = null;
+       List<Country> countryList;
+       Response countryResponse = null;
+       URLConnection connection;
+       URL url = null;
 
-        try {
-            url = new URL("https://restcountries.eu/rest/v2/region/africa");
-            ObjectMapper objectMapper = new ObjectMapper();
-            countryList = objectMapper.readValue(url, new TypeReference<List<Country>>() {});
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
-        return countryList;
+
+            try {
+                url = new URL("https://restcountries.eu/rest/v2/region/africa");
+            }
+            catch(IOException e){
+                countryResponse = new Response("No internet connection found.");
+            }
+
+            try {
+                connection = url.openConnection();
+                connection.connect();
+            }
+            catch(IOException e){
+                countryResponse = new Response("No internet connection found.");
+            }
+
+            try {
+                ObjectMapper objectMapper = new ObjectMapper();
+                countryList = objectMapper.readValue(url, new TypeReference<List<Country>>() {
+                });
+                countryResponse = new Response(countryList);
+                countryResponse.setMessage("Connection Successful");
+            }
+            catch(IOException e) {
+                countryResponse = new Response("Unable to map country list.");
+            }
+
+
+        return countryResponse;
     }
     
     //Updates a country for clearing

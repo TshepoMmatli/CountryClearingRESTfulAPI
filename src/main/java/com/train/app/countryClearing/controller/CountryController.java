@@ -1,9 +1,12 @@
 package com.train.app.countryClearing.controller;
 
 import com.train.app.countryClearing.model.ClearedCountry;
-import com.train.app.countryClearing.model.Country;
+
+import com.train.app.countryClearing.model.Response;
 import com.train.app.countryClearing.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -14,8 +17,8 @@ public class CountryController {
    private CountryService countryService;
 
    @RequestMapping(value = "/getCountries", method = RequestMethod.GET)
-   public List<Country> getCountries() {
-       return this.countryService.getCountries();
+   public Response getCountries() {
+        return countryService.getCountries();
    }
 
   @PutMapping("/updateCountry/{countryCode}/{amount}/{status}")
