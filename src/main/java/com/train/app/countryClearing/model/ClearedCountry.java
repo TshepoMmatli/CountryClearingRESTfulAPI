@@ -17,6 +17,6 @@ public class ClearedCountry {
     @Id
     private String countryCode;
     private Double amount;
-    private int Status;
+    private String Status;
 
 }
