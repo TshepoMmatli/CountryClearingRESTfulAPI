@@ -1,8 +1,6 @@
 package com.train.app.countryClearing.service;
 
-import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.train.app.countryClearing.model.ClearedCountry;
 import com.train.app.countryClearing.model.Country;
@@ -19,9 +17,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
 public class CountryService {
+    
     @Autowired
     CountryRepository countryRepository;
-    CountryResponse countryCountryResponse = null;
+        
+    CountryResponse countryCountryResponse;
 
     //Downloads a list of countries for the Africa region
     public CountryResponse getCountries() {
@@ -38,20 +38,17 @@ public class CountryService {
             countryList = objectMapper.readValue(url, new TypeReference<List<Country>>() {
             });
             countryCountryResponse = new CountryResponse(countryList);
-            countryCountryResponse.setMessage("Connection Successful");
+            if(countryList == null || countryList.size() <= 0 || countryList.isEmpty())
+                countryCountryResponse.setMessage("No countries found from the live API");
+            else
+                countryCountryResponse.setMessage("List of countries successfully recieved");
         } catch(FileNotFoundException e){
             countryCountryResponse = new CountryResponse("500: Unable to get live data. Invalid URL.");
         }catch(SocketException e){
             countryCountryResponse = new CountryResponse("No internet connection found.");
         }catch (UnknownHostException e){
             countryCountryResponse = new CountryResponse("No internet connection found.");
-        }catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (JsonParseException e) {
-            e.printStackTrace();
-        } catch (JsonMappingException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        }catch (IOException e) {
             e.printStackTrace();
         }
 
@@ -59,15 +56,17 @@ public class CountryService {
     }
 
     //Updates a country for clearing
-    public String updateCountry(String countryCode, Double amount, String status) {
+    public String updateCountry(String countryCode, double amount, String status) {
 
         List<Country> countryList = getCountries().getCountries();
 
         for(int index = 0; index < countryList.size(); index++) {
-            if (countryList.get(index).getAlpha2Code().equals(countryCode) || countryList.get(index).getAlpha3Code().equals(countryCode)){
+            if (countryList.get(index).getAlpha3Code().equalsIgnoreCase(countryCode)){
                 ClearedCountry clearedCountry = new ClearedCountry(countryCode, amount, status);
                 this.countryRepository.save(clearedCountry);
-                countryCountryResponse.setMessage("Country" + countryCode + " was successfully cleared.");
+                countryCountryResponse.setMessage(countryList.get(index).getName() 
+                        + " was successfully cleared for trading at the amount of " 
+                        + String.format("%.2f", amount));
                 break;
             }
             else{
@@ -81,11 +80,12 @@ public class CountryService {
     public ClearedCountryResponse getClearedCountries() {
 
         List<ClearedCountry> clearedCountries = this.countryRepository.findAll();
-        ClearedCountryResponse clearedCountryResponse = null;
+        ClearedCountryResponse clearedCountryResponse = new ClearedCountryResponse();
 
-        if(!(clearedCountries.size() <= 0 || clearedCountries.isEmpty())) {
+        if(!(clearedCountries.size() <= 0 || clearedCountries.isEmpty() || clearedCountries == null)) {
             clearedCountryResponse = new ClearedCountryResponse(clearedCountries);
-            clearedCountryResponse.setMessage(clearedCountryResponse.getClearedCountry().size() + " cleared countries were found");
+            clearedCountryResponse.setMessage(clearedCountryResponse.getClearedCountry().size() 
+                    + " cleared country or countries found");
         }
         else
             clearedCountryResponse.setMessage("No cleared countries");

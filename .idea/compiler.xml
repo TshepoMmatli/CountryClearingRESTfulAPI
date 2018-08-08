@@ -9,5 +9,8 @@
         <module name="countryClearing" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="countryClearing" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
