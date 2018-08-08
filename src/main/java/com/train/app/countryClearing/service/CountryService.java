@@ -6,7 +6,8 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.train.app.countryClearing.model.ClearedCountry;
 import com.train.app.countryClearing.model.Country;
-import com.train.app.countryClearing.model.Response;
+import com.train.app.countryClearing.response.ClearedCountryResponse;
+import com.train.app.countryClearing.response.CountryResponse;
 import com.train.app.countryClearing.repository.CountryRepository;
 import org.springframework.stereotype.Service;
 import java.io.FileNotFoundException;
@@ -20,10 +21,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class CountryService {
     @Autowired
     CountryRepository countryRepository;
-    Response countryResponse = null;
+    CountryResponse countryCountryResponse = null;
 
     //Downloads a list of countries for the Africa region
-    public Response getCountries() {
+    public CountryResponse getCountries() {
 
         List<Country> countryList;
         URLConnection connection;
@@ -36,14 +37,14 @@ public class CountryService {
             ObjectMapper objectMapper = new ObjectMapper();
             countryList = objectMapper.readValue(url, new TypeReference<List<Country>>() {
             });
-            countryResponse = new Response(countryList);
-            countryResponse.setMessage("Connection Successful");
+            countryCountryResponse = new CountryResponse(countryList);
+            countryCountryResponse.setMessage("Connection Successful");
         } catch(FileNotFoundException e){
-            countryResponse = new Response("500: Unable to get live data. Invalid URL.");
+            countryCountryResponse = new CountryResponse("500: Unable to get live data. Invalid URL.");
         }catch(SocketException e){
-            countryResponse = new Response("No internet connection found.");
+            countryCountryResponse = new CountryResponse("No internet connection found.");
         }catch (UnknownHostException e){
-            countryResponse = new Response("No internet connection found.");
+            countryCountryResponse = new CountryResponse("No internet connection found.");
         }catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (JsonParseException e) {
@@ -54,7 +55,7 @@ public class CountryService {
             e.printStackTrace();
         }
 
-        return countryResponse;
+        return countryCountryResponse;
     }
 
     //Updates a country for clearing
@@ -66,18 +67,30 @@ public class CountryService {
             if (countryList.get(index).getAlpha2Code().equals(countryCode) || countryList.get(index).getAlpha3Code().equals(countryCode)){
                 ClearedCountry clearedCountry = new ClearedCountry(countryCode, amount, status);
                 this.countryRepository.save(clearedCountry);
-                countryResponse.setMessage("Success");
+                countryCountryResponse.setMessage("Country" + countryCode + " was successfully cleared.");
                 break;
             }
             else{
-                countryResponse.setMessage("Invalid country code");
+                countryCountryResponse.setMessage("Invalid country code");
             }
         }
 
-        return countryResponse.getMessage();
+        return countryCountryResponse.getMessage();
     }
 
-    public List<ClearedCountry> getClearedCountries() {
-        return this.countryRepository.findAll();
+    public ClearedCountryResponse getClearedCountries() {
+
+        List<ClearedCountry> clearedCountries = this.countryRepository.findAll();
+        ClearedCountryResponse clearedCountryResponse = null;
+
+        if(!(clearedCountries.size() <= 0 || clearedCountries.isEmpty())) {
+            clearedCountryResponse = new ClearedCountryResponse(clearedCountries);
+            clearedCountryResponse.setMessage(clearedCountryResponse.getClearedCountry().size() + " cleared countries were found");
+        }
+        else
+            clearedCountryResponse.setMessage("No cleared countries");
+
+        return clearedCountryResponse;
+
     }
 }
