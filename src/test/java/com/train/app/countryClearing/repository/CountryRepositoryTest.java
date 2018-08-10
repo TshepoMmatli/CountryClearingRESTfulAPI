@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
@@ -24,12 +25,16 @@ public class CountryRepositoryTest {
     // write test cases here
     @Test
     public void whenFindAll_thenReturnClearedCountries() {
+
+        System.out.println("Test1");
+        System.out.println("========================whenFindAll_thenReturnClearedCountries=======================\n\n");
         String countryCode = "RSA";
         double amount = 10000;
         String status = "Confirmed";
         
         // given
         ClearedCountry clearedCountry = new ClearedCountry(countryCode, amount, status);
+
         entityManager.persist(clearedCountry);
         entityManager.flush();
 

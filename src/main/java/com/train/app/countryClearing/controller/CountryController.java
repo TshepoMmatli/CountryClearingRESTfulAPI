@@ -31,15 +31,17 @@ public class CountryController {
         return this.countryService.updateCountry(countryCode, amount, status);
     }
 
+    @PutMapping("/updateCountry")
+    public String updateCountry(@RequestBody List<ClearedCountry> clearedCountryList) {
+        return this.countryService.updateCountry(clearedCountryList);
+    }
+
     @GetMapping(value = "/clearedCountries")
     public ClearedCountryResponse clearedCountries() {
         return this.countryService.getClearedCountries();
     }
 
-    @PutMapping("/updateCountry")
-    public String updateCountry(@RequestBody List<ClearedCountry> clearedCountryList) {
-        return this.countryService.updateCountry(clearedCountryList);
-    }
+
 
 }
 
