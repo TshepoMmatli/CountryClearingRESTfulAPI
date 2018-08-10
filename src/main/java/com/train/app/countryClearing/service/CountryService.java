@@ -55,7 +55,7 @@ public class CountryService {
         return countryCountryResponse;
     }
 
-    //Updates a country for clearing
+    //Updates a country for clearing passing a countrycode, amount, and status as parameter
     public String updateCountry(String countryCode, double amount, String status) {
 
         List<Country> countryList = getCountries().getCountries();
@@ -72,6 +72,43 @@ public class CountryService {
             else{
                 countryCountryResponse.setMessage("Invalid country code");
             }
+        }
+
+        return countryCountryResponse.getMessage();
+    }
+
+    //Updates a country for clearing passing a list as parameter
+    public String updateCountry(List<ClearedCountry> clearedCountryList) {
+
+        String countryCode = "";
+        double amount = 0;
+        String status  = "";
+
+        List<Country> countryList = getCountries().getCountries();
+
+        for(int index = 0; index < clearedCountryList.size(); index++){
+
+            countryCode = clearedCountryList.get(index).getCountryCode();
+            amount = clearedCountryList.get(index).getAmount();
+            status = clearedCountryList.get(index).getStatus();
+
+            System.out.println("======================================================\n"
+                    + countryList.get(index).getAlpha3Code().equalsIgnoreCase(countryCode));
+
+            for(int row = 0; row < countryList.size(); row++) {
+                if (countryList.get(row).getAlpha3Code().equalsIgnoreCase(countryCode)){                  //Check if countryCode is valid
+                    ClearedCountry clearedCountry = new ClearedCountry(countryCode, amount, status);
+                    this.countryRepository.save(clearedCountry);                                            //Then save to repository
+                    countryCountryResponse.setMessage(countryList.get(row).getName()
+                            + " was successfully cleared for trading at the amount of "
+                            + String.format("%.2f", amount));
+                    break;
+                }
+                else{
+                    countryCountryResponse.setMessage("Invalid country code");
+                }
+            }
+
         }
 
         return countryCountryResponse.getMessage();

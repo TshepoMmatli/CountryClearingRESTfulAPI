@@ -1,10 +1,13 @@
 package com.train.app.countryClearing.controller;
 
+import com.train.app.countryClearing.model.ClearedCountry;
 import com.train.app.countryClearing.response.ClearedCountryResponse;
 import com.train.app.countryClearing.response.CountryResponse;
 import com.train.app.countryClearing.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
@@ -31,6 +34,11 @@ public class CountryController {
     @GetMapping(value = "/clearedCountries")
     public ClearedCountryResponse clearedCountries() {
         return this.countryService.getClearedCountries();
+    }
+
+    @PutMapping("/updateCountry")
+    public String updateCountry(@RequestBody List<ClearedCountry> clearedCountryList) {
+        return this.countryService.updateCountry(clearedCountryList);
     }
 
 }
