@@ -20,10 +20,10 @@ public class CountryService {
     
     @Autowired
     CountryRepository countryRepository;
-        
-    CountryResponse countryCountryResponse;
 
-    //Downloads a list of countries for the Africa region
+    CountryResponse countryResponse;
+
+    //Retrieve a list of countries for the Africa region
     public CountryResponse getCountries() {
 
         List<Country> countryList;
@@ -37,22 +37,23 @@ public class CountryService {
             ObjectMapper objectMapper = new ObjectMapper();
             countryList = objectMapper.readValue(url, new TypeReference<List<Country>>() {
             });
-            countryCountryResponse = new CountryResponse(countryList);
+
+            countryResponse = new CountryResponse(countryList);
             if(countryList == null || countryList.size() <= 0 || countryList.isEmpty())
-                countryCountryResponse.setMessage("No countries found from the live API");
+                countryResponse.setMessage("No countries found from the live API");
             else
-                countryCountryResponse.setMessage("List of countries successfully recieved");
+                countryResponse.setMessage("List of countries successfully recieved");
         } catch(FileNotFoundException e){
-            countryCountryResponse = new CountryResponse("500: Unable to get live data. Invalid URL.");
+            countryResponse = new CountryResponse("500: Unable to get live data. Invalid URL.");
         }catch(SocketException e){
-            countryCountryResponse = new CountryResponse("No internet connection found.");
+            countryResponse = new CountryResponse("No internet connection found.");
         }catch (UnknownHostException e){
-            countryCountryResponse = new CountryResponse("No internet connection found.");
+            countryResponse = new CountryResponse("No internet connection found.");
         }catch (IOException e) {
             e.printStackTrace();
         }
 
-        return countryCountryResponse;
+        return countryResponse;
     }
 
     //Updates a country for clearing passing a countrycode, amount, and status as parameter
@@ -64,17 +65,17 @@ public class CountryService {
             if (countryList.get(index).getAlpha3Code().equalsIgnoreCase(countryCode)){
                 ClearedCountry clearedCountry = new ClearedCountry(countryCode, amount, status);
                 this.countryRepository.save(clearedCountry);
-                countryCountryResponse.setMessage(countryList.get(index).getName() 
+                countryResponse.setMessage(countryList.get(index).getName()
                         + " was successfully cleared for trading at the amount of " 
                         + String.format("%.2f", amount));
                 break;
             }
             else{
-                countryCountryResponse.setMessage("Invalid country code");
+                countryResponse.setMessage("Invalid country code");
             }
         }
 
-        return countryCountryResponse.getMessage();
+        return countryResponse.getMessage();
     }
 
     //Updates a country for clearing passing a list as parameter
@@ -99,21 +100,23 @@ public class CountryService {
                 if (countryList.get(row).getAlpha3Code().equalsIgnoreCase(countryCode)){                  //Check if countryCode is valid
                     ClearedCountry clearedCountry = new ClearedCountry(countryCode, amount, status);
                     this.countryRepository.save(clearedCountry);                                            //Then save to repository
-                    countryCountryResponse.setMessage(countryList.get(row).getName()
+                    countryResponse.setMessage(countryList.get(row).getName()
                             + " was successfully cleared for trading at the amount of "
                             + String.format("%.2f", amount));
                     break;
                 }
-                else{
-                    countryCountryResponse.setMessage("Invalid country code");
+                else
+                {
+                    countryResponse.setMessage("Invalid country code");
                 }
             }
 
         }
 
-        return countryCountryResponse.getMessage();
+        return countryResponse.getMessage();
     }
 
+    //Retrieve cleared countries from db
     public ClearedCountryResponse getClearedCountries() {
 
         List<ClearedCountry> clearedCountries = this.countryRepository.findAll();
