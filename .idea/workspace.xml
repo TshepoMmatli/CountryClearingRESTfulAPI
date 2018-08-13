@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46ce6d50-e7d5-45fa-b944-23547762f890" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/train/app/countryClearing/unit_tests/ClearedCountriesTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/countryClearing.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/train/app/countryClearing/response/CountryResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/train/app/countryClearing/response/CountryResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/train/app/countryClearing/service/CountryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/train/app/countryClearing/service/CountryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/train/app/countryClearing/controller/CountryControllerTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/train/app/countryClearing/repository/CountryRepositoryTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/train/app/countryClearing/service/CountryServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/train/app/countryClearing/unit_tests/CountryServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/train/app/countryClearing/unit_tests/CountryServiceTest.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,21 +23,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CountryService.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/train/app/countryClearing/service/CountryService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
-              <caret line="52" column="32" lean-forward="true" selection-start-line="52" selection-start-column="32" selection-end-line="52" selection-end-column="32" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#updateCountry#0;class#CountryService#0" />
-                <element signature="method#updateCountry#1;class#CountryService#0" />
-                <element signature="method#getClearedCountries#0;class#CountryService#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="CountryResponse.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/train/app/countryClearing/response/CountryResponse.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -56,23 +39,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Country.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/train/app/countryClearing/model/Country.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="16" selection-start-line="16" selection-end-line="28" selection-end-column="24" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="CountryController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/train/app/countryClearing/controller/CountryController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="436">
-              <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
+            <state relative-caret-position="525">
+              <caret line="46" selection-start-line="46" selection-end-line="46" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#699#700#0" expanded="true" />
@@ -82,11 +53,71 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CountryServiceTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/train/app/countryClearing/unit_tests/CountryServiceTest.java">
+      <file leaf-file-name="CountryService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/train/app/countryClearing/service/CountryService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="42" column="11" lean-forward="true" selection-start-line="42" selection-start-column="11" selection-end-line="42" selection-end-column="11" />
+            <state relative-caret-position="515">
+              <caret line="70" column="80" lean-forward="true" selection-start-line="70" selection-start-column="80" selection-end-line="70" selection-end-column="80" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#getCountries#0;class#CountryService#0" />
+                <element signature="method#updateCountry#1;class#CountryService#0" />
+                <element signature="method#getClearedCountries#0;class#CountryService#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClearedCountriesTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/train/app/countryClearing/unit_tests/ClearedCountriesTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="869">
+              <caret line="108" lean-forward="true" selection-start-line="108" selection-end-line="108" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UpdateCountryTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/train/app/countryClearing/unit_tests/UpdateCountryTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="449">
+              <caret line="125" lean-forward="true" selection-start-line="125" selection-end-line="125" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestEntityManager.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-test-autoconfigure/2.0.4.RELEASE/spring-boot-test-autoconfigure-2.0.4.RELEASE.jar!/org/springframework/boot/test/autoconfigure/orm/jpa/TestEntityManager.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="465">
+              <caret line="37" column="37" selection-start-line="37" selection-start-column="37" selection-end-line="37" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Country.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/train/app/countryClearing/model/Country.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="26" column="29" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClearedCountry.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/train/app/countryClearing/model/ClearedCountry.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -123,7 +154,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/train/app/countryClearing/repository/CountryRepositoryImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/train/app/countryClearing/repository/CountryClearenceRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/train/app/countryClearing/model/CountryClearence.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/train/app/countryClearing/CountryClearingApplication.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/train/app/countryClearing/repository/CountryRepository.java" />
@@ -138,8 +168,12 @@
         <option value="$PROJECT_DIR$/src/test/java/com/train/app/countryClearing/service/CountryServiceTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/train/app/countryClearing/controller/CountryControllerTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/train/app/countryClearing/response/CountryResponse.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/train/app/countryClearing/unit_tests/CountryServiceTest.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/train/app/countryClearing/service/CountryService.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/train/app/countryClearing/unit_tests/CountryServiceTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/train/app/countryClearing/unit_tests/updateCountryTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/train/app/countryClearing/unit_tests/UpdateCountryTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/train/app/countryClearing/unit_tests/ClearedCountriesTest.java" />
       </list>
     </option>
   </component>
@@ -176,10 +210,8 @@
     <option name="skipTests" value="true" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="281" />
-    <option name="y" value="161" />
-    <option name="width" value="1386" />
-    <option name="height" value="788" />
+    <option name="width" value="959" />
+    <option name="height" value="1052" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -187,6 +219,17 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView">
+        <subPane>
+          <expand>
+            <path>
+              <item name="CountryClearing_10_08_2018" type="1abcf292:AndroidViewProjectNode" />
+              <item name="countryClearing" type="e9137016:NonAndroidModuleNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="Scope">
         <subPane subId="Changed Files">
           <expand>
@@ -325,28 +368,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="CountryClearingRESTfulAPI" type="58d84e3e:PackageViewProjectNode" />
-              <item name="countryClearing" type="616d4139:PackageViewModuleNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="AndroidView">
-        <subPane>
-          <expand>
-            <path>
-              <item name="CountryClearing_10_08_2018" type="1abcf292:AndroidViewProjectNode" />
-              <item name="countryClearing" type="e9137016:NonAndroidModuleNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -388,6 +409,15 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="countryClearing" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CountryClearing_13_08_2018" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CountryClearing_13_08_2018" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="countryClearing" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CountryClearing_13_08_2018" type="b2602c69:ProjectViewProjectNode" />
@@ -439,6 +469,17 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="CountryClearingRESTfulAPI" type="58d84e3e:PackageViewProjectNode" />
+              <item name="countryClearing" type="616d4139:PackageViewModuleNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -451,7 +492,13 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.train.app.countryClearing.unit_tests" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -465,7 +512,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.CountryClearingApplication">
+  <component name="RunManager">
     <configuration name="CountryClearingApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.train.app.countryClearing.CountryClearingApplication" />
       <module name="countryClearing" />
@@ -480,18 +527,18 @@
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     </configuration>
-    <configuration name="CountryControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ClearedCountriesTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="countryClearing" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.train.app.countryClearing.controller.*" />
+          <option name="PATTERN" value="com.train.app.countryClearing.unit_tests.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.train.app.countryClearing.controller" />
-      <option name="MAIN_CLASS_NAME" value="com.train.app.countryClearing.controller.CountryControllerTest" />
+      <option name="PACKAGE_NAME" value="com.train.app.countryClearing.unit_tests" />
+      <option name="MAIN_CLASS_NAME" value="com.train.app.countryClearing.unit_tests.ClearedCountriesTest" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -503,20 +550,66 @@
       </option>
       <patterns />
     </configuration>
-    <configuration name="CountryRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ClearedCountriesTest.updateCountry" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="countryClearing" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.train.app.countryClearing.repository.*" />
+          <option name="PATTERN" value="com.train.app.countryClearing.unit_tests.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.train.app.countryClearing.repository" />
-      <option name="MAIN_CLASS_NAME" value="com.train.app.countryClearing.repository.CountryRepositoryTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="com.train.app.countryClearing.unit_tests" />
+      <option name="MAIN_CLASS_NAME" value="com.train.app.countryClearing.unit_tests.ClearedCountriesTest" />
+      <option name="METHOD_NAME" value="updateCountry" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="ClearedCountriesTest.whenClearedCountries_returnClearedCountriesResponse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="countryClearing" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.train.app.countryClearing.unit_tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.train.app.countryClearing.unit_tests" />
+      <option name="MAIN_CLASS_NAME" value="com.train.app.countryClearing.unit_tests.ClearedCountriesTest" />
+      <option name="METHOD_NAME" value="whenClearedCountries_returnClearedCountriesResponse" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="UpdateCountryTest.updateCountry" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="countryClearing" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.train.app.countryClearing.unit_tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.train.app.countryClearing.unit_tests" />
+      <option name="MAIN_CLASS_NAME" value="com.train.app.countryClearing.unit_tests.UpdateCountryTest" />
+      <option name="METHOD_NAME" value="updateCountry" />
+      <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
@@ -572,14 +665,18 @@
     </configuration>
     <list>
       <item itemvalue="Application.CountryClearingApplication" />
-      <item itemvalue="JUnit.CountryRepositoryTest" />
-      <item itemvalue="JUnit.CountryControllerTest" />
+      <item itemvalue="JUnit.ClearedCountriesTest" />
+      <item itemvalue="JUnit.ClearedCountriesTest.updateCountry" />
+      <item itemvalue="JUnit.ClearedCountriesTest.whenClearedCountries_returnClearedCountriesResponse" />
+      <item itemvalue="JUnit.UpdateCountryTest.updateCountry" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ClearedCountriesTest" />
+        <item itemvalue="JUnit.UpdateCountryTest.updateCountry" />
+        <item itemvalue="JUnit.ClearedCountriesTest.whenClearedCountries_returnClearedCountriesResponse" />
+        <item itemvalue="JUnit.ClearedCountriesTest.updateCountry" />
         <item itemvalue="Application.CountryClearingApplication" />
-        <item itemvalue="JUnit.CountryControllerTest" />
-        <item itemvalue="JUnit.CountryRepositoryTest" />
       </list>
     </recent_temporary>
   </component>
@@ -653,39 +750,46 @@
       <option name="project" value="LOCAL" />
       <updated>1533906826386</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Commit 3">
+      <created>1534147734991</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1534147734992</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="CountryControllerTest - 2018.08.12 at 22h 01m 27s.xml">
-      <configuration name="CountryControllerTest" configurationId="JUnit" />
+    <history-entry file="CountryServiceTest_updateCountry - 2018.08.13 at 14h 23m 16s.xml">
+      <configuration name="CountryServiceTest.updateCountry" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CountryControllerTest - 2018.08.13 at 00h 04m 12s.xml">
-      <configuration name="CountryControllerTest" configurationId="JUnit" />
+    <history-entry file="CountryServiceTest_whenClearedCountries_returnClearedCountriesResponse - 2018.08.13 at 14h 24m 32s.xml">
+      <configuration name="CountryServiceTest.whenClearedCountries_returnClearedCountriesResponse" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CountryControllerTest - 2018.08.13 at 00h 05m 23s.xml">
-      <configuration name="CountryControllerTest" configurationId="JUnit" />
+    <history-entry file="CountryServiceTest_whenClearedCountries_returnClearedCountriesResponse - 2018.08.13 at 14h 24m 56s.xml">
+      <configuration name="CountryServiceTest.whenClearedCountries_returnClearedCountriesResponse" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CountryControllerTest - 2018.08.13 at 00h 06m 49s.xml">
-      <configuration name="CountryControllerTest" configurationId="JUnit" />
+    <history-entry file="CountryServiceTest_whenClearedCountries_returnClearedCountriesResponse - 2018.08.13 at 14h 26m 51s.xml">
+      <configuration name="CountryServiceTest.whenClearedCountries_returnClearedCountriesResponse" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CountryControllerTest - 2018.08.13 at 00h 08m 07s.xml">
-      <configuration name="CountryControllerTest" configurationId="JUnit" />
+    <history-entry file="CountryServiceTest_whenClearedCountries_returnClearedCountriesResponse - 2018.08.13 at 14h 27m 25s.xml">
+      <configuration name="CountryServiceTest.whenClearedCountries_returnClearedCountriesResponse" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CountryRepositoryTest - 2018.08.10 at 14h 36m 01s.xml">
-      <configuration name="CountryRepositoryTest" configurationId="JUnit" />
+    <history-entry file="CountryServiceTest_whenClearedCountries_returnClearedCountriesResponse - 2018.08.13 at 14h 28m 16s.xml">
+      <configuration name="CountryServiceTest.whenClearedCountries_returnClearedCountriesResponse" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CountryRepositoryTest - 2018.08.10 at 15h 06m 55s.xml">
-      <configuration name="CountryRepositoryTest" configurationId="JUnit" />
+    <history-entry file="CountryServiceTest_whenClearedCountries_returnClearedCountriesResponse - 2018.08.13 at 14h 29m 19s.xml">
+      <configuration name="CountryServiceTest.whenClearedCountries_returnClearedCountriesResponse" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CountryRepositoryTest - 2018.08.10 at 15h 07m 49s.xml">
-      <configuration name="CountryRepositoryTest" configurationId="JUnit" />
+    <history-entry file="CountryServiceTest - 2018.08.13 at 14h 36m 35s.xml">
+      <configuration name="CountryServiceTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CountryRepositoryTest - 2018.08.10 at 15h 10m 17s.xml">
-      <configuration name="CountryRepositoryTest" configurationId="JUnit" />
+    <history-entry file="CountryServiceTest - 2018.08.13 at 14h 37m 03s.xml">
+      <configuration name="CountryServiceTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CountryRepositoryTest - 2018.08.10 at 15h 11m 10s.xml">
-      <configuration name="CountryRepositoryTest" configurationId="JUnit" />
+    <history-entry file="UpdateCountryTest_updateCountry - 2018.08.13 at 14h 49m 34s.xml">
+      <configuration name="UpdateCountryTest.updateCountry" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
@@ -696,71 +800,38 @@
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="TODO" order="10" />
-      <window_info anchor="bottom" id="Messages" order="18" weight="0.32740742" />
+      <window_info anchor="bottom" id="TODO" order="4" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.3264865" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info id="Image Layers" order="8" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="bottom" id="Event Log" order="16" sideWeight="0.50057936" side_tool="true" weight="0.32972974" />
-      <window_info anchor="right" id="Maven Projects" order="6" sideWeight="0.49118942" visible="true" weight="0.16488793" />
-      <window_info anchor="bottom" id="Version Control" order="17" weight="0.32972974" />
-      <window_info active="true" anchor="bottom" id="Run" order="4" visible="true" weight="0.40972972" />
-      <window_info anchor="bottom" id="Terminal" order="14" sideWeight="0.4994206" weight="0.32982087" />
-      <window_info id="Capture Tool" order="13" />
-      <window_info id="Designer" order="10" />
-      <window_info content_ui="combo" id="Project" order="2" sideWeight="0.49842766" visible="true" weight="0.13713981" />
-      <window_info id="Structure" order="4" sideWeight="0.5015723" side_tool="true" weight="0.2497103" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info id="UI Designer" order="11" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info id="Favorites" order="12" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="5" weight="0.39936775" />
-      <window_info anchor="bottom" id="Spring" order="15" />
-      <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
-      <window_info anchor="right" id="Database" order="8" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="right" id="Bean Validation" order="8" />
-      <window_info id="Web" order="9" side_tool="true" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Java Enterprise" order="13" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="right" id="Coverage" order="9" sideWeight="0.5088106" side_tool="true" visible="true" weight="0.23065694" />
-    </layout>
-    <layout-to-restore>
-      <window_info id="Designer" order="4" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.33297297" />
-      <window_info anchor="bottom" id="Spring" order="9" />
       <window_info id="Image Layers" order="2" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info id="UI Designer" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50057936" side_tool="true" weight="0.32972974" />
+      <window_info anchor="right" id="Maven Projects" order="6" sideWeight="0.49118942" weight="0.694414" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.26594594" />
+      <window_info anchor="bottom" id="Version Control" order="11" weight="0.32972974" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4994206" weight="0.32982087" />
       <window_info id="Capture Tool" order="7" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info id="Designer" order="4" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49842766" visible="true" weight="0.14034152" />
+      <window_info id="Structure" order="1" sideWeight="0.5015723" side_tool="true" weight="0.2497103" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="UI Designer" order="5" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39936775" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Spring" order="9" />
+      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50057936" side_tool="true" weight="0.32972974" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.32864866" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Coverage" order="9" sideWeight="0.5088106" side_tool="true" visible="true" weight="0.23065694" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="right" id="Bean Validation" order="8" />
+      <window_info id="Web" order="3" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Java Enterprise" order="7" />
-      <window_info anchor="bottom" id="Version Control" order="11" weight="0.32972974" />
-      <window_info anchor="right" id="Maven Projects" order="6" weight="0.23126338" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49842766" visible="true" weight="0.18996799" />
+      <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="right" id="Database" order="8" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info id="Web" order="3" side_tool="true" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info id="Structure" order="1" sideWeight="0.5015723" side_tool="true" weight="0.2497103" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39936775" />
-      <window_info anchor="right" id="Bean Validation" order="9" />
-    </layout-to-restore>
+    </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -776,7 +847,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="3" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -784,66 +855,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/train/app/countryClearing/response/CountryResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#525#526#0" expanded="true" />
-            <element signature="e#567#568#0" expanded="true" />
-            <element signature="e#612#613#0" expanded="true" />
-            <element signature="e#650#651#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/train/app/countryClearing/model/Country.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="44" selection-start-column="44" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/train/app/countryClearing/controller/CountryController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="14" lean-forward="true" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#699#700#0" expanded="true" />
-            <element signature="e#751#752#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/train/app/countryClearing/service/CountryService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#updateCountry#0;class#CountryService#0" />
-            <element signature="method#updateCountry#1;class#CountryService#0" />
-            <element signature="method#getClearedCountries#0;class#CountryService#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/train/app/countryClearing/CountryClearingApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
-          <folding>
-            <element signature="imports" />
-            <element signature="e#267#268#0" />
-            <element signature="e#335#336#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/train/app/countryClearing/response/ClearedCountryResponse.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
@@ -857,7 +868,7 @@
           <caret line="40" column="80" lean-forward="true" selection-start-line="40" selection-start-column="80" selection-end-line="40" selection-end-column="80" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#updateCountry#0;class#CountryService#0" />
+            <element signature="method#getCountries#0;class#CountryService#0" />
             <element signature="method#updateCountry#1;class#CountryService#0" />
             <element signature="method#getClearedCountries#0;class#CountryService#0" />
           </folding>
@@ -906,7 +917,7 @@
           <caret line="17" column="29" lean-forward="true" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#updateCountry#0;class#CountryService#0" />
+            <element signature="method#getCountries#0;class#CountryService#0" />
             <element signature="method#updateCountry#1;class#CountryService#0" />
             <element signature="method#getClearedCountries#0;class#CountryService#0" />
           </folding>
@@ -974,7 +985,7 @@
           <caret line="34" selection-start-line="34" selection-end-line="34" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#updateCountry#0;class#CountryService#0" />
+            <element signature="method#getCountries#0;class#CountryService#0" />
             <element signature="method#updateCountry#1;class#CountryService#0" />
             <element signature="method#getClearedCountries#0;class#CountryService#0" />
           </folding>
@@ -1075,20 +1086,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="68" column="31" lean-forward="true" selection-start-line="68" selection-start-column="31" selection-end-line="68" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/train/app/countryClearing/model/ClearedCountry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/train/app/countryClearing/CountryClearingApplicationTests.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -1105,16 +1102,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/train/app/countryClearing/service/CountryServiceTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/train/app/countryClearing/model/Country.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="16" selection-start-line="16" selection-end-line="28" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/train/app/countryClearing/controller/CountryControllerTest.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/train/app/countryClearing/response/CountryResponse.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1130,10 +1117,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-test/5.0.8.RELEASE/spring-test-5.0.8.RELEASE.jar!/org/springframework/test/context/junit4/SpringJUnit4ClassRunner.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="66" selection-start-line="66" selection-end-line="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/train/app/countryClearing/model/Country.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="26" column="29" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="536">
+          <caret line="81" column="19" lean-forward="true" selection-start-line="81" selection-start-column="19" selection-end-line="81" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/pl/pragmatists/JUnitParams/1.1.0/JUnitParams-1.1.0.jar!/junitparams/internal/InvokeParameterisedMethod.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="258" selection-start-line="258" selection-end-line="258" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-beans/5.0.8.RELEASE/spring-beans-5.0.8.RELEASE.jar!/org/springframework/beans/factory/annotation/Autowired.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/train/app/countryClearing/controller/CountryController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="436">
-          <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
+        <state relative-caret-position="525">
+          <caret line="46" selection-start-line="46" selection-end-line="46" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#699#700#0" expanded="true" />
@@ -1142,22 +1167,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/train/app/countryClearing/unit_tests/CountryServiceTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/train/app/countryClearing/model/ClearedCountry.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="42" column="11" lean-forward="true" selection-start-line="42" selection-start-column="11" selection-end-line="42" selection-end-column="11" />
+        <state relative-caret-position="255">
+          <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-test-autoconfigure/2.0.4.RELEASE/spring-boot-test-autoconfigure-2.0.4.RELEASE.jar!/org/springframework/boot/test/autoconfigure/orm/jpa/TestEntityManager.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="37" column="37" selection-start-line="37" selection-start-column="37" selection-end-line="37" selection-end-column="37" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/train/app/countryClearing/service/CountryService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="52" column="32" lean-forward="true" selection-start-line="52" selection-start-column="32" selection-end-line="52" selection-end-column="32" />
+        <state relative-caret-position="515">
+          <caret line="70" column="80" lean-forward="true" selection-start-line="70" selection-start-column="80" selection-end-line="70" selection-end-column="80" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#updateCountry#0;class#CountryService#0" />
+            <element signature="method#getCountries#0;class#CountryService#0" />
             <element signature="method#updateCountry#1;class#CountryService#0" />
             <element signature="method#getClearedCountries#0;class#CountryService#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/train/app/countryClearing/unit_tests/UpdateCountryTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="449">
+          <caret line="125" lean-forward="true" selection-start-line="125" selection-end-line="125" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/train/app/countryClearing/unit_tests/ClearedCountriesTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="869">
+          <caret line="108" lean-forward="true" selection-start-line="108" selection-end-line="108" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

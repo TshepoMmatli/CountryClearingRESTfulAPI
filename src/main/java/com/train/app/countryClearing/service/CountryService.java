@@ -21,7 +21,7 @@ public class CountryService {
     @Autowired
     CountryRepository countryRepository;
 
-    CountryResponse countryResponse;
+    private CountryResponse countryResponse;
 
     //Retrieve a list of countries for the Africa region
     public CountryResponse getCountries() {
@@ -59,8 +59,10 @@ public class CountryService {
     //Updates a country for clearing passing a countrycode, amount, and status as parameter
     public String updateCountry(String countryCode, double amount, String status) {
 
+        //Get data from the online API
         List<Country> countryList = getCountries().getCountries();
 
+        //Verify that country code is valid
         for(int index = 0; index < countryList.size(); index++) {
             if (countryList.get(index).getAlpha3Code().equalsIgnoreCase(countryCode)){
                 ClearedCountry clearedCountry = new ClearedCountry(countryCode, amount, status);
