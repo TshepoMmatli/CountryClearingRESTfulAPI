@@ -40,8 +40,5 @@ public class CountryController {
     public ClearedCountryResponse clearedCountries() {
         return this.countryService.getClearedCountries();
     }
-
-
-
 }
 

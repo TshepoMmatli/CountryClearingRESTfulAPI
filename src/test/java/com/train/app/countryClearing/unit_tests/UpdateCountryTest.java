@@ -105,8 +105,6 @@ public class UpdateCountryTest {
             if(countries.get(index).getAlpha3Code().equalsIgnoreCase(countryCode)) {
                 ClearedCountry clearedCountry = new ClearedCountry(countryCode, amount, status);
 
-                //clearedCountry ave to database
-
                 actualResponse.setMessage(countryList.get(index).getName()
                         + " was successfully cleared for trading at the amount of "
                         + String.format("%.2f", amount));
@@ -118,13 +116,8 @@ public class UpdateCountryTest {
 
         }
 
-        System.out.println("E====" + expectedCountryResponse);
-        System.out.println("A====" + actualResponse);
-
         assertThat(expectedCountryResponse)
                 .isEqualTo(actualResponse);
-
-
 
     }
 

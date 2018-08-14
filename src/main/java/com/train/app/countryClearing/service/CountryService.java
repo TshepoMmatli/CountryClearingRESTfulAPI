@@ -17,10 +17,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
 public class CountryService {
-    
+
+    //Dependency injection
     @Autowired
     CountryRepository countryRepository;
 
+    //Declarations
     private CountryResponse countryResponse;
 
     //Retrieve a list of countries for the Africa region
@@ -56,7 +58,7 @@ public class CountryService {
         return countryResponse;
     }
 
-    //Updates a country for clearing passing a countrycode, amount, and status as parameter
+    //Updates a country for clearing passing a countrycode, amount, and status as argument
     public String updateCountry(String countryCode, double amount, String status) {
 
         //Get data from the online API
@@ -80,7 +82,7 @@ public class CountryService {
         return countryResponse.getMessage();
     }
 
-    //Updates a country for clearing passing a list as parameter
+    //Updates a country for clearing passing a list as argument
     public String updateCountry(List<ClearedCountry> clearedCountryList) {
 
         String countryCode = "";
@@ -118,7 +120,7 @@ public class CountryService {
         return countryResponse.getMessage();
     }
 
-    //Retrieve cleared countries from db
+    //Retrieves cleared countries from the repository
     public ClearedCountryResponse getClearedCountries() {
 
         List<ClearedCountry> clearedCountries = this.countryRepository.findAll();
