@@ -1,6 +1,7 @@
-package com.train.app.countryClearing.response;
+package com.train.app.countryclearing.response;
 
-import com.train.app.countryClearing.model.ClearedCountry;
+import com.train.app.countryclearing.model.ClearedCountry;
+import com.train.app.countryclearing.model.Country;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,10 +15,15 @@ import java.util.List;
 public class ClearedCountryResponse {
 
     private List<ClearedCountry> clearedCountry;
+    private Country country;
     private String message;
 
     public ClearedCountryResponse(List<ClearedCountry> clearedCountry){
         this.clearedCountry = clearedCountry;
+    }
+
+    public ClearedCountryResponse(Country country) {
+        this.country = country;
     }
 
     public ClearedCountryResponse(String message){

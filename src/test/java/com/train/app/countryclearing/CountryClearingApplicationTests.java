@@ -1,4 +1,4 @@
-package com.train.app.countryClearing;
+package com.train.app.countryclearing;
 
 
 import org.junit.Test;

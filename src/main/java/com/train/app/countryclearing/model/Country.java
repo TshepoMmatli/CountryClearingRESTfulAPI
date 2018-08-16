@@ -1,11 +1,10 @@
-package com.train.app.countryClearing.model;
+package com.train.app.countryclearing.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Builder

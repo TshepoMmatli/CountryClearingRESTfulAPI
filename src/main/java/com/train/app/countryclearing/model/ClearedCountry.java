@@ -1,7 +1,6 @@
-package com.train.app.countryClearing.model;
+package com.train.app.countryclearing.model;
 
 import lombok.*;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -14,9 +13,10 @@ import javax.persistence.Table;
 @Data
 @AllArgsConstructor
 public class ClearedCountry {
+
     @Id
     private String countryCode;
     private Double amount;
-    private String Status;
+    private String status;
 
 }

@@ -1,24 +1,17 @@
-package com.train.app.countryClearing.unit_tests;
+package com.train.app.countryclearing.unit_tests;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.train.app.countryClearing.model.ClearedCountry;
-import com.train.app.countryClearing.model.Country;
-import com.train.app.countryClearing.repository.CountryRepository;
-import com.train.app.countryClearing.response.ClearedCountryResponse;
-import com.train.app.countryClearing.response.CountryResponse;
-import com.train.app.countryClearing.service.CountryService;
+import com.train.app.countryclearing.model.ClearedCountry;
+import com.train.app.countryclearing.model.Country;
+import com.train.app.countryclearing.repository.CountryRepository;
+import com.train.app.countryclearing.response.ClearedCountryResponse;
+import com.train.app.countryclearing.response.CountryResponse;
+import com.train.app.countryclearing.service.CountryService;
 
-import java.io.IOException;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertNotNull;
 
-import junitparams.JUnitParamsRunner;
-import junitparams.Parameters;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

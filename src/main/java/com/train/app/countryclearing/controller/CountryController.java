@@ -1,29 +1,27 @@
-package com.train.app.countryClearing.controller;
+package com.train.app.countryclearing.controller;
 
-import com.train.app.countryClearing.model.ClearedCountry;
-import com.train.app.countryClearing.response.ClearedCountryResponse;
-import com.train.app.countryClearing.response.CountryResponse;
-import com.train.app.countryClearing.service.CountryService;
+import com.train.app.countryclearing.model.ClearedCountry;
+import com.train.app.countryclearing.response.ClearedCountryResponse;
+import com.train.app.countryclearing.response.CountryResponse;
+import com.train.app.countryclearing.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
-
 
 @RestController
 @RequestMapping(value = "/api")
 public class CountryController {
 
     @Autowired
-    private CountryService countryService;
+    CountryService countryService;
 
-    @RequestMapping(value = "/getCountries", method = RequestMethod.GET)
-    public CountryResponse getCountries() {
+    @GetMapping(value = "/getCountries")
+    public CountryResponse getCountries(){
         return countryService.getCountries();
     }
 
     @PutMapping("/updateCountry/{countryCode}/{amount}/{status}")
-    public String updateCountry(
+    public ClearedCountryResponse updateCountry(
             @PathVariable(value = "countryCode") String countryCode,
             @PathVariable(value = "amount") double amount,
             @PathVariable(value = "status") String status) {
@@ -32,7 +30,7 @@ public class CountryController {
     }
 
     @PutMapping("/updateCountry")
-    public String updateCountry(@RequestBody List<ClearedCountry> clearedCountryList) {
+    public ClearedCountryResponse updateCountry(@RequestBody List<ClearedCountry> clearedCountryList) {
         return this.countryService.updateCountry(clearedCountryList);
     }
 
@@ -40,5 +38,6 @@ public class CountryController {
     public ClearedCountryResponse clearedCountries() {
         return this.countryService.getClearedCountries();
     }
+
 }
 
