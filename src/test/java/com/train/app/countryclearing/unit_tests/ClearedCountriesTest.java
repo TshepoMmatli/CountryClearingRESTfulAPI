@@ -52,6 +52,7 @@ public class ClearedCountriesTest {
      *                                  TEST CASE FOR clearedCountries()
      *                                   ================================
      * */
+
     @Before
     public void setUp() {
         // given this

@@ -23,7 +23,6 @@ public class CountryService {
     CountryRepository countryRepository;
 
     //Declarations
-    private ClearedCountryResponse clearedCountryResponse;
     private URL url;
     private URLConnection connection;
 
@@ -62,37 +61,39 @@ public class CountryService {
     public ClearedCountryResponse updateCountry(String countryCode, double amount, String status){
 
         Country country;
+        ClearedCountryResponse clearedCountryResponse = new ClearedCountryResponse();
+
 
         if(!countryCode.isEmpty()
                 && amount > 0
                 && (status.equalsIgnoreCase("Cleared")||
-                    status.equalsIgnoreCase("Confirmed")||
-                    status.equalsIgnoreCase("Cancelled"))) {
+                status.equalsIgnoreCase("Confirmed")||
+                status.equalsIgnoreCase("Cancelled"))) {
 
-                    try {
-                        url = new URL("https://restcountries.eu/rest/v2/alpha/" + countryCode);
-                        connection = url.openConnection();
-                        connection.connect();
-                        ObjectMapper objectMapper = new ObjectMapper();
-                        country = objectMapper.readValue(url, Country.class);
+            try {
+                url = new URL("https://restcountries.eu/rest/v2/alpha/" + countryCode);
+                connection = url.openConnection();
+                connection.connect();
+                ObjectMapper objectMapper = new ObjectMapper();
+                country = objectMapper.readValue(url, Country.class);
 
-                        if (country == null)
-                            clearedCountryResponse.setMessage(countryCode + " is an invalid country code. No countries found from the live API");
-                        else {
-                            ClearedCountry clearedCountry = new ClearedCountry(countryCode, amount, status);
-                            this.countryRepository.save(clearedCountry);
-                            clearedCountryResponse = new ClearedCountryResponse("200: " + country.getName()
-                                    + " was successfully " + status + " for trading at the amount of "
-                                    + String.format("%.2f", amount));
-                        }
+                if (country == null)
+                    clearedCountryResponse.setMessage(countryCode + " is an invalid country code. No countries found from the live API");
+                else {
+                    ClearedCountry clearedCountry = new ClearedCountry(countryCode, amount, status);
+                    this.countryRepository.save(clearedCountry);
+                    clearedCountryResponse = new ClearedCountryResponse("200: " + country.getName()
+                            + " was successfully " + status + " for trading at the amount of "
+                            + String.format("%.2f", amount));
+                }
 
-                    } catch (FileNotFoundException e) {
-                        clearedCountryResponse = new ClearedCountryResponse("404: " + countryCode + " is an invalid country code. No country found from the online API.");
-                    } catch (SocketException | UnknownHostException e) {
-                        clearedCountryResponse = new ClearedCountryResponse("500: No internet connection found.");
-                    } catch (IOException e) {
-                        clearedCountryResponse = new ClearedCountryResponse("400: Invalid input of country code. Use 2 or 3 alphabetic country code.");
-                    }
+            } catch (FileNotFoundException e) {
+                clearedCountryResponse = new ClearedCountryResponse("404: " + countryCode + " is an invalid country code. No country found from the online API.");
+            } catch (SocketException | UnknownHostException e) {
+                clearedCountryResponse = new ClearedCountryResponse("500: No internet connection found.");
+            } catch (IOException e) {
+                clearedCountryResponse = new ClearedCountryResponse("400: Invalid input of country code. Use 2 or 3 alphabetic country code.");
+            }
         }
         else{
             clearedCountryResponse = new ClearedCountryResponse("400: Invalid parameters supplied." +
@@ -113,13 +114,46 @@ public class CountryService {
         double amount;
         String status;
 
+        ClearedCountryResponse clearedCountryResponse = new ClearedCountryResponse();
+        List<ClearedCountry> clearedCountryListToBeSaved = new ArrayList<>();
+
         for(int index = 0; index < clearedCountryList.size(); index++){
 
             countryCode = clearedCountryList.get(index).getCountryCode();
             amount = clearedCountryList.get(index).getAmount();
             status = clearedCountryList.get(index).getStatus();
 
-            updateCountry(countryCode, amount, status);
+            if(!countryCode.isEmpty()
+                    && amount > 0
+                    && (status.equalsIgnoreCase("Cleared")||
+                    status.equalsIgnoreCase("Confirmed")||
+                    status.equalsIgnoreCase("Cancelled"))) {
+
+                countryIsFound(countryCode);
+
+                if (countryIsFound(countryCode).getMessage().equals("404: No Country found.")) {
+                    clearedCountryResponse.setMessage(countryCode + " is an invalid country code. No countries found from the live API");
+                    break;
+                }
+                else if(!countryIsFound(countryCode).getMessage().equals("404: No Country found.")){
+                    clearedCountryListToBeSaved.add(new ClearedCountry(countryCode, amount, status));
+                }
+            }
+            else{
+                clearedCountryResponse = new ClearedCountryResponse("400: Invalid parameters supplied." +
+                        " Please enter" +
+                        " a valid country code," +
+                        " an amount greater than 0" +
+                        " and a valid status. E.g. Cleared, Confirmed or Cancelled");
+            }
+        }
+
+        for(int i = 0; i < clearedCountryListToBeSaved.size(); i++) {
+
+            this.countryRepository.save(clearedCountryListToBeSaved.get(i));
+            clearedCountryResponse = new ClearedCountryResponse(i + 1 + " out of " + clearedCountryList.size() +
+                    " cleared countries were updated to the database. If country is not updated input supplied is invalid.");
+            clearedCountryResponse.setClearedCountry(clearedCountryListToBeSaved);
         }
 
         return clearedCountryResponse;
@@ -140,6 +174,34 @@ public class CountryService {
             response.setMessage("204: The server successfully processed the request but there are no cleared countries");
 
         return response;
+    }
+
+    /*Recieves a country code and then returns the relevant details of the country*/
+    private ClearedCountryResponse  countryIsFound(String countryCode){
+
+        ClearedCountryResponse clearedCountryResponse = new ClearedCountryResponse("404: No Country found.");
+
+        try {
+            url = new URL("https://restcountries.eu/rest/v2/alpha/" + countryCode);
+            connection = url.openConnection();
+            connection.connect();
+            ObjectMapper objectMapper = new ObjectMapper();
+            Country country = objectMapper.readValue(url, Country.class);
+
+            if(country != null){
+                clearedCountryResponse.setMessage("200: Country found.");
+                clearedCountryResponse.setCountry(country);
+            }
+
+        } catch (FileNotFoundException e) {
+            clearedCountryResponse = new ClearedCountryResponse("404: " + countryCode + " is an invalid country code. No country found from the online API.");
+        } catch (SocketException | UnknownHostException e) {
+            clearedCountryResponse = new ClearedCountryResponse("500: No internet connection found.");
+        } catch (IOException e) {
+            clearedCountryResponse = new ClearedCountryResponse("400: Invalid input of country code. Use 2 or 3 alphabetic country code.");
+        }
+
+        return clearedCountryResponse;
     }
 
 }
