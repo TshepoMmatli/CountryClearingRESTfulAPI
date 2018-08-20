@@ -22,10 +22,6 @@ public class ClearedCountryResponse {
         this.clearedCountry = clearedCountry;
     }
 
-    public ClearedCountryResponse(Country country) {
-        this.country = country;
-    }
-
     public ClearedCountryResponse(String message){
         this.message = message;
     }

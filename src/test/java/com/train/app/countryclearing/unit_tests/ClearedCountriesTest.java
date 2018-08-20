@@ -6,12 +6,9 @@ import com.train.app.countryclearing.repository.CountryRepository;
 import com.train.app.countryclearing.response.ClearedCountryResponse;
 import com.train.app.countryclearing.response.CountryResponse;
 import com.train.app.countryclearing.service.CountryService;
-
 import java.util.ArrayList;
 import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertNotNull;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,12 +19,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
-
 @DataJpaTest
 public class ClearedCountriesTest {
-    private String countryCode = "ZAF";
-    private String status = "Confirmed";
-    private double amount = 1000;
 
     @MockBean
     private CountryService countryService;
@@ -42,9 +35,7 @@ public class ClearedCountriesTest {
     private CountryResponse countryResponse;
     private ClearedCountry clearedCountry;
     private ClearedCountryResponse clearedCountryResponse, expectedResponse;
-    List<Country> countryList = new ArrayList<>();
-    private CountryResponse actualResponse = new CountryResponse(),
-            expectedCountryResponse = new CountryResponse();
+    ArrayList<Country> countryList = new ArrayList<>();
 
 
     /*
@@ -55,8 +46,11 @@ public class ClearedCountriesTest {
 
     @Before
     public void setUp() {
-        // given this
 
+        // given this
+        String status = "Confirmed";
+        double amount = 1000;
+        String countryCode = "ZAF";
 
         clearedCountry = new ClearedCountry(countryCode, amount, status);
         List<ClearedCountry> countries = new ArrayList<>();
@@ -69,7 +63,6 @@ public class ClearedCountriesTest {
 
         entityManager.persist(clearedCountry);
         entityManager.flush();
-
     }
 
     @Test
@@ -81,17 +74,11 @@ public class ClearedCountriesTest {
         // then make sure that cleared country list is not null
         //assertNotNull(clearedCountryList);
 
-        if(clearedCountryList != null || !(clearedCountryList.size() <= 0)){
-            //if list is not null then generate a response using the list
-            //along with the list attach a message to the response
-            clearedCountryResponse = new ClearedCountryResponse(clearedCountryList);
-            clearedCountryResponse.setMessage(clearedCountryResponse.getClearedCountry().size()
-                    + " cleared country or countries found");
-        }
-        else
-        {
-            clearedCountryResponse = new ClearedCountryResponse("No cleared countries");
-        }
+        //if list is not null then generate a response using the list
+        //along with the list attach a message to the response
+        clearedCountryResponse = new ClearedCountryResponse(clearedCountryList);
+        clearedCountryResponse.setMessage(clearedCountryResponse.getClearedCountry().size()
+                + " cleared country or countries found");
 
         System.out.println("e" + expectedResponse);
         System.out.println("a" + clearedCountryResponse);

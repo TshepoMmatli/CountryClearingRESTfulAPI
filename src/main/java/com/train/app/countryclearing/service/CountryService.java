@@ -26,7 +26,18 @@ public class CountryService {
     private URL url;
     private URLConnection connection;
 
-    //Retrieve a list of countries for the Africa region
+    /*constants
+     *constant for an amount that's between one thousand and fifty million*/
+    private static final double MINAMOUNT = 1000.00;
+    private static final double MAXAMOUNT = 50000000000.00;
+
+    /*constants for for exception handling messages*/
+    private String invalidInputMessage = "400: Invalid input of country code. Use 2 or 3 alphabetic country code.";
+    private String noInternetMessage = "500: No internet connection found.";
+    private String noCountryFound = "404: No Country found.";
+    private String countryFound = "200: Country found.";
+
+    /*Retrieve a list of countries for the Africa region*/
     public CountryResponse getCountries() {
 
         List<Country> countryList;
@@ -44,7 +55,7 @@ public class CountryService {
             if(countryList == null || countryList.isEmpty())
                 countryResponse.setMessage("No countries found from the live API");
             else
-                countryResponse.setMessage("List of countries successfully recieved");
+                countryResponse.setMessage("List of countries successfully received");
         } catch(FileNotFoundException e){
             countryResponse = new CountryResponse("500: Unable to get live data. Invalid URL.");
         }catch(SocketException | UnknownHostException e){
@@ -57,56 +68,49 @@ public class CountryService {
         return countryResponse;
     }
 
-    //Updates a country for clearing passing a countrycode, amount, and status as argument
+    /*Updates a country for clearing passing a country code, amount, and status as arguments*/
     public ClearedCountryResponse updateCountry(String countryCode, double amount, String status){
 
-        Country country;
         ClearedCountryResponse clearedCountryResponse = new ClearedCountryResponse();
 
-
         if(!countryCode.isEmpty()
-                && amount > 0
+                && amount >= MINAMOUNT && amount <= MAXAMOUNT
                 && (status.equalsIgnoreCase("Cleared")||
                 status.equalsIgnoreCase("Confirmed")||
                 status.equalsIgnoreCase("Cancelled"))) {
 
-            try {
-                url = new URL("https://restcountries.eu/rest/v2/alpha/" + countryCode);
-                connection = url.openConnection();
-                connection.connect();
-                ObjectMapper objectMapper = new ObjectMapper();
-                country = objectMapper.readValue(url, Country.class);
-
-                if (country == null)
-                    clearedCountryResponse.setMessage(countryCode + " is an invalid country code. No countries found from the live API");
-                else {
-                    ClearedCountry clearedCountry = new ClearedCountry(countryCode, amount, status);
+                if(countryIsFound(countryCode).getMessage().equals(countryFound)){
+                    ClearedCountry clearedCountry = new ClearedCountry(countryIsFound(countryCode).getCountry().getAlpha3Code(), amount, status);
                     this.countryRepository.save(clearedCountry);
-                    clearedCountryResponse = new ClearedCountryResponse("200: " + country.getName()
+                    clearedCountryResponse = new ClearedCountryResponse("200: " + countryIsFound(countryCode).getCountry().getName()
                             + " was successfully " + status + " for trading at the amount of "
                             + String.format("%.2f", amount));
                 }
-
-            } catch (FileNotFoundException e) {
-                clearedCountryResponse = new ClearedCountryResponse("404: " + countryCode + " is an invalid country code. No country found from the online API.");
-            } catch (SocketException | UnknownHostException e) {
-                clearedCountryResponse = new ClearedCountryResponse("500: No internet connection found.");
-            } catch (IOException e) {
-                clearedCountryResponse = new ClearedCountryResponse("400: Invalid input of country code. Use 2 or 3 alphabetic country code.");
-            }
+                else if (countryIsFound(countryCode).getMessage().equals(noCountryFound)){
+                        clearedCountryResponse.setMessage(countryCode + " is an invalid country code. No countries found from the live API");
+                }
+                else if(countryIsFound(countryCode).getMessage().equals(noInternetMessage)){
+                        clearedCountryResponse = new ClearedCountryResponse(noInternetMessage);
+                }
+                else if(countryIsFound(countryCode).getMessage().equals(invalidInputMessage)){
+                        clearedCountryResponse = new ClearedCountryResponse(invalidInputMessage);
+                }
+                else{
+                    clearedCountryResponse = new ClearedCountryResponse("500: Internal server error has occurred");
+                }
         }
         else{
             clearedCountryResponse = new ClearedCountryResponse("400: Invalid parameters supplied." +
                     " Please enter" +
                     " a valid country code," +
-                    " an amount greater than 0" +
+                    " an amount between " + String.format("%.2f", MINAMOUNT) + " and " + String.format("%.2f", MAXAMOUNT) +
                     " and a valid status. E.g. Cleared, Confirmed or Cancelled");
         }
 
         return clearedCountryResponse;
     }
 
-    //Updates a country for clearing passing a list as argument
+    /*Updates a country for clearing passing a list as argument*/
     public ClearedCountryResponse updateCountry(List<ClearedCountry> clearedCountryList) {
 
         //Local variable declaration
@@ -114,46 +118,54 @@ public class CountryService {
         double amount;
         String status;
 
+        Boolean saveContent = false;
+
         ClearedCountryResponse clearedCountryResponse = new ClearedCountryResponse();
         List<ClearedCountry> clearedCountryListToBeSaved = new ArrayList<>();
 
-        for(int index = 0; index < clearedCountryList.size(); index++){
+        for (ClearedCountry aClearedCountryList : clearedCountryList) {
 
-            countryCode = clearedCountryList.get(index).getCountryCode();
-            amount = clearedCountryList.get(index).getAmount();
-            status = clearedCountryList.get(index).getStatus();
+            countryCode = aClearedCountryList.getCountryCode();
+            amount = aClearedCountryList.getAmount();
+            status = aClearedCountryList.getStatus();
 
-            if(!countryCode.isEmpty()
+            if (!countryCode.isEmpty()
                     && amount > 0
-                    && (status.equalsIgnoreCase("Cleared")||
-                    status.equalsIgnoreCase("Confirmed")||
+                    && (status.equalsIgnoreCase("Cleared") ||
+                    status.equalsIgnoreCase("Confirmed") ||
                     status.equalsIgnoreCase("Cancelled"))) {
 
-                countryIsFound(countryCode);
-
-                if (countryIsFound(countryCode).getMessage().equals("404: No Country found.")) {
+                if (countryIsFound(countryCode).getMessage().equals(countryFound)){
+                    clearedCountryListToBeSaved.add(new ClearedCountry(countryIsFound(countryCode).getCountry().getAlpha3Code(), amount, status));
+                    saveContent = true;
+                } else if (countryIsFound(countryCode).getMessage().equals(noCountryFound)) {
                     clearedCountryResponse.setMessage(countryCode + " is an invalid country code. No countries found from the live API");
                     break;
+                } else if(countryIsFound(countryCode).getMessage().equals(noInternetMessage)){
+                    clearedCountryResponse = new ClearedCountryResponse(noInternetMessage);
+
+                } else if(countryIsFound(countryCode).getMessage().equals(invalidInputMessage)){
+                    clearedCountryResponse = new ClearedCountryResponse(invalidInputMessage);
                 }
-                else if(!countryIsFound(countryCode).getMessage().equals("404: No Country found.")){
-                    clearedCountryListToBeSaved.add(new ClearedCountry(countryCode, amount, status));
-                }
-            }
-            else{
+
+            } else {
                 clearedCountryResponse = new ClearedCountryResponse("400: Invalid parameters supplied." +
                         " Please enter" +
                         " a valid country code," +
-                        " an amount greater than 0" +
+                        " an amount between " + String.format("%.2f", MINAMOUNT) + " and " + String.format("%.2f", MAXAMOUNT) +
                         " and a valid status. E.g. Cleared, Confirmed or Cancelled");
             }
         }
 
-        for(int i = 0; i < clearedCountryListToBeSaved.size(); i++) {
+        if(saveContent){
+            for(int i = 0; i < clearedCountryListToBeSaved.size(); i++) {
 
-            this.countryRepository.save(clearedCountryListToBeSaved.get(i));
-            clearedCountryResponse = new ClearedCountryResponse(i + 1 + " out of " + clearedCountryList.size() +
-                    " cleared countries were updated to the database. If country is not updated input supplied is invalid.");
-            clearedCountryResponse.setClearedCountry(clearedCountryListToBeSaved);
+                this.countryRepository.save(clearedCountryListToBeSaved.get(i));
+
+                clearedCountryResponse = new ClearedCountryResponse(i + 1 + " out of " + clearedCountryList.size() +
+                        " cleared countries were updated to the database. If country is not updated input supplied is invalid.");
+                clearedCountryResponse.setClearedCountry(clearedCountryListToBeSaved);
+            }
         }
 
         return clearedCountryResponse;
@@ -165,7 +177,7 @@ public class CountryService {
         List<ClearedCountry> clearedCountries = this.countryRepository.findAll();
         ClearedCountryResponse response = new ClearedCountryResponse();
 
-        if(!(clearedCountries.isEmpty() || clearedCountries == null)) {
+        if(!clearedCountries.isEmpty()) {
             response = new ClearedCountryResponse(clearedCountries);
             response.setMessage("200: " + response.getClearedCountry().size()
                     + " cleared country or countries found");
@@ -176,10 +188,10 @@ public class CountryService {
         return response;
     }
 
-    /*Recieves a country code and then returns the relevant details of the country*/
+    /*Receives a country code and then returns the relevant details of the country*/
     private ClearedCountryResponse  countryIsFound(String countryCode){
 
-        ClearedCountryResponse clearedCountryResponse = new ClearedCountryResponse("404: No Country found.");
+        ClearedCountryResponse clearedCountryResponse = new ClearedCountryResponse();
 
         try {
             url = new URL("https://restcountries.eu/rest/v2/alpha/" + countryCode);
@@ -194,7 +206,7 @@ public class CountryService {
             }
 
         } catch (FileNotFoundException e) {
-            clearedCountryResponse = new ClearedCountryResponse("404: " + countryCode + " is an invalid country code. No country found from the online API.");
+            clearedCountryResponse = new ClearedCountryResponse("404: No Country found.");
         } catch (SocketException | UnknownHostException e) {
             clearedCountryResponse = new ClearedCountryResponse("500: No internet connection found.");
         } catch (IOException e) {

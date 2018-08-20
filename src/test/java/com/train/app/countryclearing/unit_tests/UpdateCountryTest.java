@@ -29,8 +29,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(JUnitParamsRunner.class)
 @DataJpaTest
 public class UpdateCountryTest {
-    private String countryCode = "ZAF";
-    private String status = "Confirmed";
     private double amount = 1000;
 
     @MockBean
@@ -55,7 +53,7 @@ public class UpdateCountryTest {
 
     /*
      * =====================================================================================================
-     *                          TEST CASE FOR UPDATECOUNTRY(String, Double, String)
+     *                          TEST CASE FOR UPDATE COUNTRY(String, Double, String)
      *                          ===================================================
      * */
     @Before
@@ -80,8 +78,10 @@ public class UpdateCountryTest {
 
     //Parameters that will be passed to the updateCountry method
     private Object[] parametersToTestUpdate() {
+        String status = "Confirmed";
+        String countryCode = "ZAF";
         return new Object[]{
-                new Object[]{this.countryCode, this.amount, this.status}
+                new Object[]{countryCode, this.amount, status}
         };
     }
 
